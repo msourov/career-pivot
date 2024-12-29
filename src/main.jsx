@@ -4,9 +4,11 @@ import App from "./App.jsx";
 import { createTheme, MantineProvider } from "@mantine/core";
 import "./index.css";
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 
 const theme = createTheme({
-  /** Put your mantine theme override here */
+  fontFamily: "Open Sans, sans-serif",
+  primaryColor: "cyan",
 });
 
 createRoot(document.getElementById("root")).render(
