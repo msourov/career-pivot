@@ -7,16 +7,19 @@ import {
   Switch,
   Container,
   Select,
+  Group,
+  Box,
+  Checkbox,
 } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import { useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { FaKey, FaPencilAlt, FaUser } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { MdDateRange } from "react-icons/md";
 
 const Settings = () => {
   const [gender, setGender] = useState("");
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState();
   return (
     <div className="flex bg-gray-100 px-6">
       {/* Sidebar */}
@@ -47,7 +50,13 @@ const Settings = () => {
             <div className="grid grid-cols-1 gap-12">
               {/* Profile Photo Section */}
               <div className="flex items-center gap-6">
-                <Avatar size={120} className="bg-purple-100 rounded-full" />
+                <div className="relative w-fit">
+                  {/* Avatar */}
+                  <Avatar size={120} className="bg-purple-100 rounded-full" />
+                  <div className="absolute bottom-3 -right-1 bg-white border border-purple-500 rounded-full p-2">
+                    <FaPencilAlt className="text-purple-600" size={14} />
+                  </div>
+                </div>
                 <div>
                   <Text size="sm" weight={500} color="purple">
                     Profile photo
@@ -64,8 +73,6 @@ const Settings = () => {
                   variant="filled"
                   label="Name"
                   placeholder="Name"
-                  value="Name"
-                  readOnly
                   classNames={{
                     input: "bg-purple-50",
                     label: "text-sm font-medium text-gray-600",
@@ -75,9 +82,7 @@ const Settings = () => {
                 <TextInput
                   variant="filled"
                   label="Email Address"
-                  placeholder="example@gmail.com"
-                  value="Gmail@.com"
-                  readOnly
+                  placeholder="Gmail@.com"
                   classNames={{
                     input: "bg-purple-50",
                     label: "text-sm font-medium text-gray-600",
@@ -146,6 +151,7 @@ const Settings = () => {
             </div>
             <div className="flex items-center justify-between mb-4">
               <Switch
+                color="purple"
                 defaultChecked
                 label="Reminders"
                 description="These are notification to remind you of updated you might have missed"
@@ -153,6 +159,7 @@ const Settings = () => {
             </div>
             <div className="flex items-center justify-between">
               <Switch
+                color="purple"
                 defaultChecked
                 label="News"
                 description="updated you might have missed"
@@ -171,6 +178,157 @@ const Settings = () => {
             </div>
           </div>
         </Paper>
+        {/* Social Accounts */}
+        <Paper shadow="sm" radius="md" className="mb-8">
+          <p className="text-md mb-4 px-4 py-2 text-purple-800 bg-purple-100">
+            Notifications
+          </p>
+          <div className="px-6 py-8 space-y-6">
+            <div className="space-y-4">
+              {/* Google Account */}
+              <Group justify="space-between" className="border-b pb-4">
+                <div>
+                  <Text weight={500} size="sm">
+                    Google
+                  </Text>
+                  <Text size="xs" color="dimmed">
+                    Gmail@.com
+                  </Text>
+                </div>
+                <Button
+                  variant="subtle"
+                  color="purple"
+                  compact
+                  className="text-purple-600 hover:underline"
+                >
+                  Connect
+                </Button>
+              </Group>
+
+              <Group justify="space-between" className="border-b pb-4">
+                <div>
+                  <Text weight={500} size="sm">
+                    LinkedIn
+                  </Text>
+                  <Text size="xs" color="dimmed">
+                    Not Connected
+                  </Text>
+                </div>
+                <Button
+                  variant="subtle"
+                  color="purple"
+                  compact
+                  className="text-purple-600 hover:underline"
+                >
+                  Disconnect
+                </Button>
+              </Group>
+              <Group justify="space-between">
+                <div>
+                  <Text weight={500} size="sm">
+                    X
+                  </Text>
+                  <Text size="xs" color="dimmed">
+                    Not Connected
+                  </Text>
+                </div>
+                <Button
+                  variant="subtle"
+                  color="purple"
+                  compact
+                  className="text-purple-600 hover:underline"
+                >
+                  Disconnect
+                </Button>
+              </Group>
+            </div>
+            <div className="flex justify-end mt-6">
+              <Button color="purple" radius="md" w={140}>
+                Update
+              </Button>
+            </div>
+          </div>
+        </Paper>
+
+        {/* Password & security */}
+        <Paper shadow="sm" radius="md" className="mb-8">
+          {/* Header */}
+          <p className="text-md mb-4 px-4 py-2 text-purple-800 bg-purple-100">
+            Password & Security
+          </p>
+          <div className="px-6 py-8 space-y-6">
+            <div className="space-y-6">
+              <div>
+                <Text size="sm" weight={500} color="gray-700" className="mb-2">
+                  Change Password
+                </Text>
+                <TextInput
+                  placeholder="Enter Current Password"
+                  type="password"
+                  classNames={{
+                    input: "bg-purple-50 mt-2",
+                  }}
+                  leftSection={<FaKey className="text-purple-500" />}
+                />
+              </div>
+
+              {/* New Password */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <TextInput
+                  placeholder="Enter new Password"
+                  type="password"
+                  classNames={{
+                    input: "bg-purple-50 mt-2",
+                  }}
+                  leftSection={<FaKey className="text-purple-500" />}
+                />
+                <TextInput
+                  placeholder="Confirm new Password"
+                  type="password"
+                  classNames={{
+                    input: "bg-purple-50 mt-2",
+                  }}
+                  leftSection={<FaKey className="text-purple-500" />}
+                />
+              </div>
+            </div>
+
+            {/* Update Button */}
+            <div className="flex justify-end mt-6">
+              <Button color="purple" radius="md" className="px-6" w={140}>
+                Update
+              </Button>
+            </div>
+          </div>
+        </Paper>
+
+        {/* Delete account */}
+        <Box className="mb-8 border border-red-700 bg-red-50">
+          {/* Header */}
+          <p className="text-md mb-4 px-4 py-2 text-red-800 bg-red-100">
+            Delete Your Account
+          </p>
+          <div className="px-6 py-8 space-y-6">
+            <div className="space-y-6">
+              <p className="text-red-800">
+                When you delete your account, you lose account services, and we
+                permanently delete your personal data. you can cancel the
+                deletion for 14 days
+              </p>
+              <Checkbox
+                color="#C70039"
+                label="Confirm that i want to delete my account"
+              />
+            </div>
+
+            {/* Update Button */}
+            <div className="flex justify-end mt-6">
+              <Button color="#C70039" radius="md" className="px-6" w={140}>
+                Delete
+              </Button>
+            </div>
+          </div>
+        </Box>
       </Container>
     </div>
   );

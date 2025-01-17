@@ -13,6 +13,8 @@ import Landing from "./pages/LandingPage";
 import Pricing from "./pages/Pricing";
 import ProtectedRoute from "./ProtectedRoute";
 import Settings from "./pages/Settings";
+import ResumeActionsPage from "./pages/Resume";
+import CreateResumePage from "./pages/CreateResume";
 
 const loader = (
   <div className="flex justify-center items-center">
@@ -74,6 +76,22 @@ export const router = createBrowserRouter([
               </Suspense>
             ),
           },
+          {
+            path: "/resume",
+            element: (
+              <Suspense fallback={loader}>
+                <ResumeActionsPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/resume/create-resume",
+            element: (
+              <Suspense fallback={loader}>
+                <CreateResumePage />
+              </Suspense>
+            ),
+          },
         ],
       },
     ],
@@ -92,7 +110,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "pricing",
-    element: <Pricing />,
+    element: (
+      <Suspense fallback={loader}>
+        <Pricing />
+      </Suspense>
+    ),
   },
   {
     path: "login",

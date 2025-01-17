@@ -5,8 +5,8 @@ const Hero = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="flex justify-between">
-        <div className="text-center w-1/3 m-16 space-y-10 self-center">
+      <div className="flex justify-between flex-col-reverse md:flex-row">
+        <div className="text-center md:w-1/3 md:m-16 m-6 space-y-10 self-center">
           <p>
             A successful career isn’t built overnight. It’s crafted with the
             right guidance, consistent persistence, and the essential tools
@@ -17,6 +17,7 @@ const Hero = () => {
           <Button
             variant="outline"
             className="shadow-lg"
+            w={160}
             color="black"
             onClick={() => navigate("/signup")}
           >

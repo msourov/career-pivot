@@ -111,7 +111,7 @@ const Features = () => {
       </div>
 
       {/* Section 5 */}
-      <div className="flex flex-col md:flex-row items-center">
+      <div className="flex flex-col md:flex-row items-center mb-12">
         <div className="md:w-1/3 p-6 bg-red-50 shadow-md rounded-md">
           <h3 className="text-xl font-semibold text-red-700 mb-4">
             Actionable Guidance
